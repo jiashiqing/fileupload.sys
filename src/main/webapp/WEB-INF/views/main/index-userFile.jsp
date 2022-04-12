@@ -212,7 +212,7 @@ function downloadFile(fileId){
         <div class="br"  style="display:none;" id="progress_all">
         	<ul>
             	<li><h1><a href="#" class="fr" id="cancel">取消</a></h1>
-                	<div class="process clearfix" id="process">
+                	<div class="process clearfix" id="process">T
 						<span class="progress-box">
 							<span class="progress-bar" style="width: 0%;" id="progress_bar"></span>
 						</span>

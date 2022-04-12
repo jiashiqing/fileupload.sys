@@ -11,10 +11,18 @@
 	</settings>
 	
 	<plugins>
-		<plugin interceptor="org.noo.pagination.interceptor.PaginationInterceptor">
-			<property name="dialectClass" value="org.noo.pagination.dialect.db.MySQLDialect" />
-			<property name="sqlPattern" value=".*Page.*" />
-			<property name="noPagingPattern" value=".*NoPage.*" />
+<!--		<plugin interceptor="org.noo.pagination.interceptor.PaginationInterceptor">-->
+<!--			<property name="dialectClass" value="org.noo.pagination.dialect.db.MySQLDialect" />-->
+<!--			<property name="sqlPattern" value=".*Page.*" />-->
+<!--			<property name="noPagingPattern" value=".*NoPage.*" />-->
+<!--		</plugin>-->
+
+		<!-- com.github.pagehelper为PageHelper类所在包名 -->
+		<plugin interceptor="com.github.pagehelper.PageInterceptor">
+			<!-- 表示使用mysql的分页方法 -->
+			<property name="helperDialect" value="mysql" />
+			<!-- 表示当页码长度为0 的时候,就不进行分页查询 -->
+			<property name="pageSizeZero" value="true"/>
 		</plugin>
 	</plugins>
 </configuration>

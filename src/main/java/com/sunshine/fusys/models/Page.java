@@ -30,7 +30,7 @@ public class Page extends BaseDTO {
 	/**
 	 * 总条数
 	 */
-	private int records;
+	private long records;
 
 	/**
 	 * 返回状态
@@ -117,11 +117,11 @@ public class Page extends BaseDTO {
 		this.dataRows = dataRows;
 	}
 
-	public int getRecords() {
+	public long getRecords() {
 		return records;
 	}
 
-	public void setRecords(int records) {
+	public void setRecords(long records) {
 		this.records = records;
 	}
 
