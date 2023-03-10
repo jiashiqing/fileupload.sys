@@ -8,6 +8,7 @@
 		<result property="userId" column="USER_ID" />
 		<result property="operateTime" column="OPERATE_TIME" />
 		<result property="ipAddress" column="IP_ADDRESS" />
+		<result property="field" column="FIELD_ID" />
 		<result property="fileName" column="FILE_NAME" />
 		<result property="fileSize" column="FILE_SIZE" />
 		<result property="filePath" column="FILE_PATH" />
@@ -23,6 +24,7 @@
        			USER_ID,
        			OPERATE_TIME,
        			IP_ADDRESS,
+       			FIELD_ID,
        			FILE_NAME,
        			FILE_SIZE,
        			FILE_PATH,
@@ -34,7 +36,8 @@
 	    		#{userFile.userId},
 				#{userFile.operateTime},
 				#{userFile.ipAddress}, 
-				#{userFile.fileName}, 
+				#{userFile.field},
+				#{userFile.fileName},
 				#{userFile.fileSize}, 
 				#{userFile.filePath}, 
 				#{userFile.uploadType},
@@ -62,6 +65,11 @@
 	   			<![CDATA[
 	   				AND tuf.USER_ID = #{user_id}
 	   			]]>
+			</if>
+			<if test="field != null and field != 0">
+				<![CDATA[
+					AND tuf.FIELD_ID = #{field}
+				]]>
 			</if>
 			<if test="file_name != null and file_name != ''">
 	   			<![CDATA[
@@ -109,6 +117,11 @@
 	   			<![CDATA[
 	   				AND tuf.FILE_NAME LIKE '%${file_name}%'
 	   			]]>
+			</if>
+			<if test="field != null and field != 0">
+				<![CDATA[
+					AND tuf.FIELD_ID = #{field}
+				]]>
 			</if>
 			<if test="upload_type != null  and upload_type != 0">
 	   			<![CDATA[

@@ -1,17 +1,19 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%
-    String path = request.getContextPath();
-    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path;
-%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <base href="<%=basePath%>">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <title>文件传输助手</title>
+    <%@include file="/common/head.jsp" %>
 </head>
-<body>
-    <div><a href="<%=basePath%>/indexMain/index">index</a></div>
-</body>
+<frameset rows="48,*" cols="*" frameborder="no" border="0" id="parentFrame" name="parentFrame" framespacing="0">
+    <frame src="${pageContext.request.contextPath}/indexMain/indexTop" name="topFrame" frameborder="no" scrolling="no"
+           noresize="noresize" marginheight="48" id="topFrame" title="topFrame"/>
+    <frameset id="subParentFrame" name="subParentFrame" rows="*" cols="200,*" framespacing="0" frameborder="no" border="0">
+        <frame src="${pageContext.request.contextPath}/indexMain/indexLeft" name="leftFrame" frameborder="no"
+               scrolling="no" noresize="noresize" marginwidth="200" id="leftFrame" class="leftframe" title="leftFrame"/>
+        <frame src="${pageContext.request.contextPath}/indexMain/indexRight" name="rightframe" frameborder="no"
+               overflow-x="none" scrolling="auto" id="rightframe" class="rightframe" title="rightframe"/>
+    </frameset>
+</frameset>
 </html>

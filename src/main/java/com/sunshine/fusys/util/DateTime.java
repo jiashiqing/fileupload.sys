@@ -121,7 +121,7 @@ public class DateTime {
     		return new SimpleDateFormat(format).format(new Date());
     }
     
-    public static String toDate(String  format,Date date){
+    public static String toDate(String format,Date date){
     	if ( Validation.isNULL(format))
     		return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
     	else

@@ -26,6 +26,8 @@ public class UserFileDTO extends BaseDTO {
 	private Date operateTime;
 	/** IP地址 **/
 	private String ipAddress;
+	/** 学科编号 **/
+	private int field;
 	/** 文件名 **/
 	private String fileName;
 	/** 文件大小 M **/
@@ -40,12 +42,13 @@ public class UserFileDTO extends BaseDTO {
 	public UserFileDTO() {
 	}
 
-	public UserFileDTO(long userId, Date operateTime, String ipAddress,
+	public UserFileDTO(long userId, Date operateTime, String ipAddress, int field,
 			String fileName, String filePath, int uploadType) {
 		super();
 		this.userId = userId;
 		this.operateTime = operateTime;
 		this.ipAddress = ipAddress;
+		this.field = field;
 		this.fileName = fileName;
 		this.filePath = filePath;
 		this.uploadType = uploadType;
@@ -143,4 +146,11 @@ public class UserFileDTO extends BaseDTO {
 		this.fileSize = fileSize;
 	}
 
+	public int getField() {
+		return field;
+	}
+
+	public void setField(int field) {
+		this.field = field;
+	}
 }

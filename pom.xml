@@ -273,27 +273,34 @@
 		 -->
 
 	</dependencies>
-	<repositories>
-		<!-- For JSR 303 Validation - Hibernat Validator -->
-		<repository>
-			<id>jboss-public-repository-group</id>
-			<url>https://repository.jboss.org/nexus/content/groups/public-jboss</url>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository>
-	</repositories>
+<!--	<repositories>-->
+<!--		&lt;!&ndash; For JSR 303 Validation - Hibernat Validator &ndash;&gt;-->
+<!--		<repository>-->
+<!--			<id>jboss-public-repository-group</id>-->
+<!--			<url>https://repository.jboss.org/nexus/content/groups/public-jboss</url>-->
+<!--			<releases>-->
+<!--				<enabled>true</enabled>-->
+<!--			</releases>-->
+<!--			<snapshots>-->
+<!--				<enabled>true</enabled>-->
+<!--			</snapshots>-->
+<!--		</repository>-->
+<!--	</repositories>-->
 	<build>
 		<plugins>
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
+					<encoding>UTF-8</encoding>
 					<source>1.5</source>
 					<target>1.5</target>
+					<compilerArguments>
+						<bootclasspath>${java.home}/lib/rt.jar:${java.home}/lib/jce.jar</bootclasspath>
+					</compilerArguments>
 					<showWarnings>true</showWarnings>
 				</configuration>
 			</plugin>

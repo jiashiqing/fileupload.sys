@@ -6,11 +6,13 @@ import com.sunshine.fusys.models.UserFileDTO;
 import com.sunshine.fusys.services.UserFileService;
 import com.sunshine.fusys.util.*;
 import org.apache.commons.io.FilenameUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -53,6 +55,12 @@ public class UserFileController extends BaseController {
         }
         map.put("pageNum", pageNum);
         map.put("user_id", 1);
+        String field = request.getParameter("field");
+        if ("1".equals(field)) {
+            field = "";
+        }
+        map.put("field", field);
+        request.setAttribute("field", field);
         String uploadType = request.getParameter("uploadType");
         String fileName = request.getParameter("fileName");
         if (StringUtil.isNotEmpty(uploadType)) {
@@ -99,6 +107,7 @@ public class UserFileController extends BaseController {
             result.put("status", "success");
             result.put("message", "上传成功");
         }
+        logger.info("upload success!");
         return ajaxHtml(JsonUtil.getJsonString4JavaPOJO(result), response);
     }
 
@@ -117,19 +126,25 @@ public class UserFileController extends BaseController {
         Pattern p = Pattern.compile("\\s|\t|\r|\n");
         Matcher m = p.matcher(orgFileName);
         orgFileName = m.replaceAll("_");
-        String realFilePath = folder + File.separator + "admin" + File.separator;
+        String dir = DateTime.toDate("yyyy-MM-dd", baseDate);
+        String realFilePath = folder + File.separator + dir + File.separator;
         if (!(new File(realFilePath).exists())) {
             new File(realFilePath).mkdirs();
         }
-        String bigRealFilePath = realFilePath + File.separator + FilenameUtils.getBaseName(orgFileName).concat(".") + fileName.concat(".").concat(FilenameUtils.getExtension(orgFileName).toLowerCase());
+        String bigRealFilePath = realFilePath + FilenameUtils.getBaseName(orgFileName).concat(".") + fileName.concat(".").concat(FilenameUtils.getExtension(orgFileName).toLowerCase());
+        logger.info("upload file path:{}", bigRealFilePath);
         if (file.getSize() > 0) {
             File targetFile = new File(bigRealFilePath);
             file.transferTo(targetFile);//写入目标文件
         }
+        // 学科编号
+        String field = request.getParameter("field");
+        int fieldID = StringUtils.isEmpty(field)? 1 : Integer.parseInt(field);
         //保存user file
         UserFileDTO fileDTO = new UserFileDTO(1,
                 new Date(),
                 IpTool.getClientAddress(request),
+                fieldID,
                 orgFileName,
                 bigRealFilePath,
                 1);

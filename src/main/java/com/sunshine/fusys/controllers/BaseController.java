@@ -8,12 +8,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * 基础控制controller
  */
 public class BaseController {
+    private final Logger logger = LoggerFactory.getLogger(BaseController.class);
     
     /**JSP页面-新增**/
 	protected final static String VIEW_NEW = "new"; 
@@ -43,6 +46,7 @@ public class BaseController {
 	
 	// AJAX输出，返回null
     public String ajax(String content, String type, HttpServletResponse response) {
+        logger.info("response data:{}", content);
         try {
             response.setContentType(type + ";charset=UTF-8");
             response.setHeader("Pragma", "No-cache");

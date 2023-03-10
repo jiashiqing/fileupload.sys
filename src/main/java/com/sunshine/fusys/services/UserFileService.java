@@ -67,7 +67,7 @@ public class UserFileService {
     public Page findPage(Map<String, Object> map) {
         logger.info(LogUtil.getLogStr("findUserFileList", "200", map, "", ""));
         String pageNum = String.valueOf(map.get("pageNum"));
-        PageHelper.startPage(StringUtils.isEmpty(pageNum) ? 1 : Integer.parseInt(pageNum), 5);
+        PageHelper.startPage(StringUtils.isEmpty(pageNum) ? 1 : Integer.parseInt(pageNum), 10);
         List<UserFileDTO> list = userFileDao.findPage(map);
         // 取分页信息
         PageInfo<UserFileDTO> pageInfo = new PageInfo<UserFileDTO>(list);

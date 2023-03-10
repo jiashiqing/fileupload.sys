@@ -61,8 +61,8 @@ public class Progress {
 
 	public String getSpeed() {
 		speed = NumUtil.divideNumber(
-								NumUtil.divideNumber(bytesRead * 1000, System.currentTimeMillis()- startReatTime), 
-								1000);
+					NumUtil.divideNumber(bytesRead * 1000, System.currentTimeMillis()- startReatTime),
+				1000);
 		return speed;
 	}
 

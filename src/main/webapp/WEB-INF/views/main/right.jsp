@@ -11,7 +11,8 @@
 <br/>
 <br/>
 <br/>
-<center style="font-size:20px ">欢迎使用文件上传系统</center>
+<center style="font-size:40px ">欢迎使用文件传输助手</center>
+<div style="text-align: center;"><img style="width:500px;margin: 10px 280px" src="${pageContext.request.contextPath}/images/logo3.jpg" /></div>
 <br/>
 <br/>
 <center style="font-size:20px;color: #999; " id="userName_msg">${msg }</center>

@@ -1,5 +1,11 @@
 *.class
-
+.idea
+/target
+.gitignore
+.classpath
+.project
+.settings
 # Package Files #
 *.war
 *.ear
+
